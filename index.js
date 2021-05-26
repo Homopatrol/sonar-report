@@ -181,7 +181,7 @@ function logError(context, error){
       headers["Cookie"] = response.headers['set-cookie'].map(cookie => cookie.split(';')[0]).join('; ');
     } catch (error) {
         logError("logging in", error);
-        return null;
+        process.exit(1);
     }
     
   } else if (token) {
@@ -221,7 +221,7 @@ function logError(context, error){
           })));
       } catch (error) {
           logError("getting rules", error);
-          return null;
+          process.exit(1);
       }
     } while (nbResults === pageSize);
   }
@@ -268,7 +268,7 @@ function logError(context, error){
             }));
         } catch (error) {
           logError("getting issues", error);  
-            return null;
+          process.exit(1);
         }
       } while (nbResults === pageSize);
   
